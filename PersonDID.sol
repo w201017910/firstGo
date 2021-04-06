@@ -56,8 +56,8 @@ contract PersonDID {
         p.age = age;
     }
     
-    function getPersonAge(address ip) public view returns (uint8) {
-        if(msg.sender==ip){return PersonInfo[ip].age;}else if(power[msg.sender][ip]!=0){return PersonInfo[ip].age;}else{return 0;}
+    function getPersonAge(address ip) public returns (uint8) {
+        if(msg.sender==ip){return PersonInfo[ip].age;}else if(power[msg.sender][ip]!=0){power[msg.sender][ip]--;return PersonInfo[ip].age;}else{return 0;}
         
     }
     
